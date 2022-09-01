@@ -20,7 +20,7 @@ const instance = Axios.create({
     maxContentLength: 1024 * 1024 * 512,
   });
 const task = new AsyncTask('verify and send', () => verifyOldAndSendNew());
-const job = new SimpleIntervalJob({ seconds: 10 }, task);
+const job = new SimpleIntervalJob({ minutes: 5 }, task);
 const bundler = new Bundlr("http://m-testnet.arweave.net:3000", "arweave", privateKey);
 scheduler.addSimpleIntervalJob(job)
 
@@ -30,6 +30,11 @@ async function verifyOldAndSendNew() {
 	if (oldTxId) {
 		const oldTx = await instance.get(`/${oldTxId}`);
 		console.log(`Checking old tx ${oldTxId}, received response ${oldTx.status}.`);
+		if (oldTx.status == 200) {
+			// SUCCESS
+		} else {
+			// SEND ALERTS!
+		}
 	} 
 	const response = await bundler.uploadFile(file_path);
 	console.log("DataItem id = ", response.data.id);
