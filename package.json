@@ -1,0 +1,29 @@
+{
+  "name": "bundling_server",
+  "version": "1.0.0",
+  "description": "An open source implementation of a bundling server that accepts DataItem entries (according to ANS104), bundles many DataItem entries together and sends them as a bundle to the Arweave network.",
+  "main": "index.js",
+  "scripts": {
+    "test": "ts-node processStream.ts",
+    "start": "ts-node index.ts"
+  },
+  "keywords": [
+    "arweave",
+    "bundlr"
+  ],
+  "author": "abhavk",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudwatch-logs": "^3.137.0",
+    "@bundlr-network/client": "^0.5.9",
+    "@types/node": "^13.13.4",
+    "arbundles": "0.6.21",
+    "arlocal": "^1.1.45",
+    "arweave": "1.11.6",
+    "express": "^4.17.2",
+    "toad-scheduler": "^1.6.0"
+  }
+}
